@@ -18,7 +18,7 @@ A powerful iOS SDK for real-time communication using enabling seamless push mess
 
 ### Swift Package Manager
 1. Open Xcode and go to `File > Add Packages...`
-2. Enter the package URL: `https://github.com/your-org/pushlytic-ios-sdk`
+2. Enter the package URL: `https://github.com/pushlytic/pushlytic-ios-sdk`
 3. Set the dependency rule to **Up to Next Major Version**, starting at `1.0.0`
 4. Add the package to your desired target
 

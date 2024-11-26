@@ -59,8 +59,24 @@ struct YourApp: App {
 
 ## Basic Usage
 
+### Stream Management
+```swift
+// Open a connection to start receiving messages
+Pushlytic.openStream()
+
+// Later, when you want to stop receiving messages:
+// - Set clearState to false to allow automatic reconnection on app foreground
+// - Set clearState to true to clear all connection metadata and prevent automatic reconnection
+Pushlytic.endStream(clearState: false)
+```
+
 ### Set Up User Information
 ```swift
+// Ensure the stream is opened before registering connection data
+// Open a connection to start receiving messages
+Pushlytic.openStream()
+
+// You must open the stream first before registering connection data, such as user ID, tags, or metadata.
 // Register user ID
 Pushlytic.registerUserID("unique_user_id")
 
@@ -72,17 +88,6 @@ Pushlytic.setMetadata([
     "first_name": "John",
     "account_type": "premium"
 ])
-```
-
-### Stream Management
-```swift
-// Open a connection to start receiving messages
-Pushlytic.openStream()
-
-// Later, when you want to stop receiving messages:
-// - Set clearState to false to allow automatic reconnection on app foreground
-// - Set clearState to true to clear all connection metadata and prevent automatic reconnection
-Pushlytic.endStream(clearState: false)
 ```
 
 ### Handle Messages

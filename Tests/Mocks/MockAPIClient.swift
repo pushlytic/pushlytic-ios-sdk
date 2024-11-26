@@ -90,10 +90,6 @@ class MockAPIClient: APIClientProtocol {
         lastStateChangeHandler?(.messageReceived(message))
     }
     
-    func simulateHeartbeatReceived(_ status: String) {
-        lastStateChangeHandler?(.heartbeatReceived(status))
-    }
-    
     func simulateConnectionError(_ error: Error) {
         lastStateChangeHandler?(.connectionError(error))
     }

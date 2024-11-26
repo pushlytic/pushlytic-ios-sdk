@@ -16,11 +16,20 @@ A powerful iOS SDK for real-time communication using enabling seamless push mess
 
 ## Installation
 
+Get started with Pushlytic in your iOS app - it's quick and easy! 
+
 ### Swift Package Manager
 1. Open Xcode and go to `File > Add Packages...`
 2. Enter the package URL: `https://github.com/pushlytic/pushlytic-ios-sdk`
-3. Set the dependency rule to **Up to Next Major Version**, starting at `1.0.0`
+3. Set the dependency rule to **Up to Next Minor Version**, starting at `0.1.0`
 4. Add the package to your desired target
+
+> **Note**: We're rapidly improving Pushlytic! 🚀 During our pre-1.0 phase:
+> - Minor version updates (0.x.0) may include exciting new features and improvements that could have breaking changes
+> - Using "Up to Next Minor" ensures you get all bug fixes while maintaining stability
+> - Once we hit 1.0.0, we'll follow strict semantic versioning with "Up to Next Major Version"
+>
+> Join us early and help shape the future of push infrastructure! Your feedback and use cases are invaluable as we move toward our 1.0.0 release.
 
 ## Quick Start
 

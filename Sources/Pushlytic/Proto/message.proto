@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "streamlink/internal/transport/gapi/pb";
+
+// Message format for bidirectional streaming
+message MessageRequest {
+  repeated MessageAcknowledgement message_acknowledgement = 1;
+  ControlMessage control_message = 2;
+  string user_id = 3;
+  string session_id = 4;
+  repeated string tags = 5;
+  CustomEvent custom_event = 6;
+  string metadata = 7;
+  string device_id = 8;
+  MetadataOperation metadata_operation = 9;
+}
+
+// Metadata operations for clearing or updating
+enum MetadataOperation {
+  METADATA_NOOP = 0;      // No operation
+  METADATA_UPDATE = 1;    // Update metadata with new value
+  METADATA_CLEAR = 2;     // Clear existing metadata
+}
+
+// Response format for bidirectional streaming
+message MessageResponse {
+  oneof data {
+    Messages messages = 1;
+    ControlMessage control_message = 2;
+    ConnectionAcknowledgement connection_acknowledgement = 3;
+    Heartbeat heartbeat = 4;
+  }
+}
+
+// Acknowledgement for individual messages
+message MessageAcknowledgement {
+  string trace_id = 1;
+}
+
+// Acknowledgement for connecting to the server
+message ConnectionAcknowledgement {
+  string connection_id = 1;
+}
+
+// List of messages
+message Messages {
+  repeated Message message = 1;
+}
+
+// Message payload
+message Message {
+  string trace_id = 1;
+  string content = 2;
+}
+
+enum ControlCommand {
+  UNKNOWN = 0;
+  OPEN = 1;
+  CLOSE = 2;
+}
+
+// Control message payload
+message ControlMessage {
+  ControlCommand command = 1; // e.g., "open", "close"
+}
+
+// Heartbeat message payload
+message Heartbeat {
+  string status = 1; // e.g., "alive"
+}
+
+message CustomEvent {
+  string name = 1;
+  string metadata = 2;
+}

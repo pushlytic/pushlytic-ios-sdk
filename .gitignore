@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+
+# Xcode
+xcuserdata/
+project.xcworkspace/
+DerivedData/
+*.xcodeproj
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.hmap
+*.ipa
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Debug Symbols
+*.dSYM
+*.dSYM.zip
+*.dsym.zip
+
+# Build
+build/
+*.out.*
+
+# Protocol Buffers
+/protoc-gen-swift
+/protoc-gen-grpc-swift

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package pb;
+
+import "message.proto";
+
+option go_package = "streamlink/internal/transport/gapi/pb";
+
+service Streamlink {
+  // Bidirectional stream for sending and receiving messages
+  rpc MessageStream (stream MessageRequest) returns (stream MessageResponse);
+}

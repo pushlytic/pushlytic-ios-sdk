@@ -74,6 +74,17 @@ Pushlytic.setMetadata([
 ])
 ```
 
+### Stream Management
+```swift
+// Open a connection to start receiving messages
+Pushlytic.openStream()
+
+// Later, when you want to stop receiving messages:
+// - Set clearState to false to allow automatic reconnection on app foreground
+// - Set clearState to true to clear all connection metadata and prevent automatic reconnection
+Pushlytic.endStream(clearState: false)
+```
+
 ### Handle Messages
 ```swift
 class MessageHandler: PushlyticDelegate {

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,7 +19,7 @@
 		1B9D90102CF567CD0061A36D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9D900F2CF567CD0061A36D /* SettingsView.swift */; };
 		1B9D90132CF568170061A36D /* MessageModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9D90122CF568170061A36D /* MessageModalView.swift */; };
 		1B9D90162CF568D40061A36D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9D90152CF568D40061A36D /* Message.swift */; };
-		1B9D901A2CF585C30061A36D /* Pushlytic in Frameworks */ = {isa = PBXBuildFile; productRef = 1B9D90192CF585C30061A36D /* Pushlytic */; };
+		1B9FBD672CF64681009CC5D0 /* Pushlytic in Frameworks */ = {isa = PBXBuildFile; productRef = 1B9FBD662CF64681009CC5D0 /* Pushlytic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B9D901A2CF585C30061A36D /* Pushlytic in Frameworks */,
+				1B9FBD672CF64681009CC5D0 /* Pushlytic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +146,7 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				1B9D90192CF585C30061A36D /* Pushlytic */,
+				1B9FBD662CF64681009CC5D0 /* Pushlytic */,
 			);
 			productName = Example;
 			productReference = 1B9D8FEB2CF561AD0061A36D /* Example.app */;
@@ -177,7 +177,7 @@
 			);
 			mainGroup = 1B9D8FE22CF561AD0061A36D;
 			packageReferences = (
-				1B9D8FFD2CF5636A0061A36D /* XCLocalSwiftPackageReference "../pushlytic-ios-sdk" */,
+				1B9FBD652CF64681009CC5D0 /* XCRemoteSwiftPackageReference "pushlytic-ios-sdk" */,
 			);
 			productRefGroup = 1B9D8FEC2CF561AD0061A36D /* Products */;
 			projectDirPath = "";
@@ -434,16 +434,21 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		1B9D8FFD2CF5636A0061A36D /* XCLocalSwiftPackageReference "../pushlytic-ios-sdk" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../pushlytic-ios-sdk";
+/* Begin XCRemoteSwiftPackageReference section */
+		1B9FBD652CF64681009CC5D0 /* XCRemoteSwiftPackageReference "pushlytic-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pushlytic/pushlytic-ios-sdk";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.1.0;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1B9D90192CF585C30061A36D /* Pushlytic */ = {
+		1B9FBD662CF64681009CC5D0 /* Pushlytic */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 1B9FBD652CF64681009CC5D0 /* XCRemoteSwiftPackageReference "pushlytic-ios-sdk" */;
 			productName = Pushlytic;
 		};
 /* End XCSwiftPackageProductDependency section */

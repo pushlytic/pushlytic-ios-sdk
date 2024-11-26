@@ -24,7 +24,6 @@ import Foundation
 enum MockMessageStreamState {
     case connected
     case messageReceived(String)
-    case heartbeatReceived(String)
     case connectionError(Error)
     case disconnected
     case timeout
@@ -38,8 +37,6 @@ enum MockMessageStreamState {
             callback(.connected)
         case .messageReceived(let message):
             callback(.messageReceived(message))
-        case .heartbeatReceived(let status):
-            callback(.heartbeatReceived(status))
         case .connectionError(let error):
             callback(.connectionError(error))
         case .disconnected:

@@ -5,8 +5,10 @@ import PackageDescription
 
 let package = Package(
     name: "Pushlytic",
+    platforms: [
+        .iOS(.v13)
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "Pushlytic",
             targets: ["Pushlytic"]),
@@ -21,7 +23,8 @@ let package = Package(
             name: "Pushlytic",
             dependencies: [
                 .product(name: "GRPC", package: "grpc-swift"),
-              ]),
+            ]
+        ),
         .testTarget(
             name: "PushlyticTests",
             dependencies: ["Pushlytic"]),

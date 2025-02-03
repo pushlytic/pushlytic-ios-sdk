@@ -21,7 +21,7 @@ Get started with Pushlytic in your iOS app - it's quick and easy!
 ### Swift Package Manager
 1. Open Xcode and go to `File > Add Packages...`
 2. Enter the package URL: `https://github.com/pushlytic/pushlytic-ios-sdk`
-3. Set the dependency rule to **Up to Next Minor Version**, starting at `0.1.0`
+3. Set the dependency rule to **Up to Next Minor Version**, starting at `0.1.1`
 4. Add the package to your desired target
 
 > **Note**: We're rapidly improving Pushlytic! 🚀 During our pre-1.0 phase:

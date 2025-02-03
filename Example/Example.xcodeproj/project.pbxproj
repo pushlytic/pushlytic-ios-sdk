@@ -440,7 +440,7 @@
 			repositoryURL = "https://github.com/pushlytic/pushlytic-ios-sdk";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.1.0;
+				minimumVersion = 0.1.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

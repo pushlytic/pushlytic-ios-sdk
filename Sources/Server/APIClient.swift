@@ -94,6 +94,13 @@ final class APIClient: APIClientProtocol {
             eventLoopGroup: group
         )
 
+        configuration.tlsConfiguration = .makeClientConfigurationBackedByNIOSSL(
+            certificateChain: [],
+            privateKey: nil,
+            trustRoots: .default,
+            certificateVerification: .none
+        )
+
         let channel = ClientConnection(configuration: configuration)
         self.client = Pb_StreamlinkNIOClient(channel: channel)
         self.processingQueue = DispatchQueue(label: "com.pushlytic.processingQueue", qos: .userInitiated)

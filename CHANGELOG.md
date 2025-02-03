@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to the Pushlytic iOS SDK will be documented in this file.
 
+## [0.1.1] - 2025-02-02
+### Changed
+- **Enabled TLS** for all gRPC connections by default
+    - Added `configuration.tlsConfiguration` with `.makeClientConfigurationBackedByNIOSSL(...)`
+
 ## [0.1.0] - 2024-02-24
 ### Beta Release
 First beta release of Pushlytic iOS SDK! 🎉

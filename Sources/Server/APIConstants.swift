@@ -24,6 +24,6 @@ struct APIConstants {
     static let reconnectionDelay: TimeInterval = 10
     static let eventLoopThreads = 5
     static let serverHost = "stream.pushlytic.com"
-    static let serverPort = 50001
+    static let serverPort = 443
     static let bundleIdentifier = "com.pushlytic"
 }

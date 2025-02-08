@@ -42,7 +42,7 @@ protocol APIClientProtocol: AnyObject {
     /// - Parameter onStateChange: A closure invoked whenever the message stream state changes.
     /// - Note: This method establishes a persistent connection to the server and handles
     ///   incoming messages or connection events.
-    func openMessageStream(onStateChange: @escaping (MessageStreamState) -> Void)
+    func openMessageStream(metadata: [String: Any]?, onStateChange: @escaping (MessageStreamState) -> Void)
     
     /// Registers a user identifier with the server.
     ///

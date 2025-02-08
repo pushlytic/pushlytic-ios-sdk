@@ -43,8 +43,8 @@ class MockAPIClient: APIClientProtocol {
     
     // Stream state handler
     private(set) var lastStateChangeHandler: ((MessageStreamState) -> Void)?
-    
-    func openMessageStream(onStateChange: @escaping (MessageStreamState) -> Void) {
+
+    func openMessageStream(metadata: [String: Any]?, onStateChange: @escaping (MessageStreamState) -> Void) {
         isMessageStreamOpened = true
         lastStateChangeHandler = onStateChange
     }

@@ -110,9 +110,11 @@ final class APIClient: APIClientProtocol {
     // MARK: - Connection Management
     
     /// Opens a bi-directional message stream
-    /// - Parameter onStateChange: Callback for stream state changes, always called on main thread
+    /// - Parameters:
+    ///   - metadata: Optional metadata to include in the initial connection
+    ///   - onStateChange: Callback for stream state changes, always called on main thread
     /// - Thread Safety: This method is thread-safe and can be called from any thread
-    func openMessageStream(onStateChange: @escaping (MessageStreamState) -> Void) {
+    func openMessageStream(metadata: [String: Any]? = nil, onStateChange: @escaping (MessageStreamState) -> Void) {
         lock.lock()
         defer { lock.unlock() }
         
@@ -129,7 +131,7 @@ final class APIClient: APIClientProtocol {
             }
             
             self.setupStreamCompletion(onStateChange: onStateChange)
-            self.sendOpenConnectionMessage()
+            self.sendOpenConnectionMessage(metadata: metadata)
             self.startHeartbeatMonitoring(onStateChange: onStateChange)
         }
     }
@@ -204,11 +206,21 @@ final class APIClient: APIClientProtocol {
         }
     }
     
-    private func sendOpenConnectionMessage() {
+    private func sendOpenConnectionMessage(metadata: [String: Any]? = nil) {
+        var metadataString = ""
+        if let metadata = metadata {
+            let metadataData = try? JSONSerialization.data(withJSONObject: metadata, options: [])
+            metadataString = metadataData.flatMap { String(data: $0, encoding: .utf8) } ?? "{}"
+        }
+        
         let openConnectionMessage = Pb_MessageRequest.with {
             $0.userID = userID ?? ""
             $0.tags = tags ?? []
             $0.sessionID = sessionID
+            if !metadataString.isEmpty {
+                $0.metadataOperation = .metadataUpdate
+                $0.metadata = metadataString
+            }
             $0.controlMessage = Pb_ControlMessage.with {
                 $0.command = .open
             }

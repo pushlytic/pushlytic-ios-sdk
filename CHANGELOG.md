@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to the Pushlytic iOS SDK will be documented in this file.
 
+## [0.1.2] - 2025-02-08
+### Added
+- **Metadata Support for Initial Connection**
+  - Added ability to include metadata when opening a connection via `openStream(metadata:)`
+
 ## [0.1.1] - 2025-02-02
 ### Changed
 - **Enabled TLS** for all gRPC connections by default

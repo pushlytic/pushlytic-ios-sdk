@@ -164,8 +164,10 @@ public final class Pushlytic {
     // MARK: - Connection Management
     
     /// Opens a connection to the message streaming service
+    /// - Parameters:
+    ///   - metadata: Optional metadata to include in the initial connection
     /// - Thread Safety: This method is thread-safe and can be called from any thread
-    public static func openStream() {
+    public static func openStream(metadata: [String: Any]? = nil) {
         queue.async(flags: .barrier) {
             guard isInitialized, storedApiKey != nil else {
                 notifyDelegateOnMain(.error(.notConfigured))
@@ -179,7 +181,10 @@ public final class Pushlytic {
             initializeLifecycleManager()
             
             isManuallyDisconnected = false
-            startMessageStream()
+            if let metadata = metadata {
+                storedMetadata = metadata
+            }
+            startMessageStream(metadata: storedMetadata)
         }
     }
 
@@ -348,13 +353,13 @@ public final class Pushlytic {
     
     // MARK: - Internal Methods
     
-    private static func startMessageStream() {
+    private static func startMessageStream(metadata: [String: Any]? = nil) {
         guard isInitialized else {
             notifyDelegateOnMain(.error(.notConfigured))
             return
         }
         
-        client?.openMessageStream { state in
+        client?.openMessageStream(metadata: metadata) { state in
             switch state {
             case .connected:
                 queue.async(flags: .barrier) {
